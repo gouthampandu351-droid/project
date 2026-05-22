@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chundi Gowtham Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#030303;
+    color:white;
+    overflow-x:hidden;
+    position:relative;
+}
+
+/* =========================
+   AMAZING BACKGROUND
+========================= */
+
+body::before{
+    content:'';
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:
+    radial-gradient(circle at 20% 20%, rgba(255,0,0,0.25), transparent 20%),
+    radial-gradient(circle at 80% 30%, rgba(255,0,0,0.18), transparent 25%),
+    radial-gradient(circle at 50% 80%, rgba(255,0,0,0.12), transparent 25%),
+    linear-gradient(135deg,#000000,#050505,#0a0a0a);
+    animation:bgMove 12s infinite alternate ease-in-out;
+    z-index:-3;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    background-image:
+    linear-gradient(rgba(255,0,0,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,0,0,0.08) 1px, transparent 1px);
+    background-size:50px 50px;
+    mask-image:radial-gradient(circle at center, black 40%, transparent 100%);
+    z-index:-2;
+}
+
+/* =========================
+   FLOATING LIGHTS
+========================= */
+
+.bg-animation{
+    position:fixed;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    top:0;
+    left:0;
+    z-index:-1;
+}
+
+.bg-animation span{
+    position:absolute;
+    display:block;
+    width:20px;
+    height:20px;
+    background:rgba(255,0,0,0.7);
+    box-shadow:
+    0 0 15px red,
+    0 0 30px red,
+    0 0 60px darkred;
+    border-radius:50%;
+    animation:animate 25s linear infinite;
+    bottom:-150px;
+}
+
+.bg-animation span:nth-child(1){
+    left:10%;
+    width:25px;
+    height:25px;
+    animation-duration:18s;
+}
+
+.bg-animation span:nth-child(2){
+    left:20%;
+    width:15px;
+    height:15px;
+    animation-duration:22s;
+    animation-delay:2s;
+}
+
+.bg-animation span:nth-child(3){
+    left:35%;
+    width:30px;
+    height:30px;
+    animation-duration:30s;
+}
+
+.bg-animation span:nth-child(4){
+    left:50%;
+    width:18px;
+    height:18px;
+    animation-duration:16s;
+    animation-delay:4s;
+}
+
+.bg-animation span:nth-child(5){
+    left:65%;
+    width:35px;
+    height:35px;
+    animation-duration:28s;
+}
+
+.bg-animation span:nth-child(6){
+    left:80%;
+    width:20px;
+    height:20px;
+    animation-duration:20s;
+    animation-delay:3s;
+}
+
+.bg-animation span:nth-child(7){
+    left:90%;
+    width:28px;
+    height:28px;
+    animation-duration:24s;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav{
+    width:100%;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    z-index:1000;
+    backdrop-filter:blur(15px);
+    background:rgba(0,0,0,0.6);
+    border-bottom:1px solid rgba(255,0,0,0.2);
+}
+
+.logo{
+    font-size:32px;
+    font-weight:700;
+    color:#ff2e2e;
+    text-shadow:0 0 15px red;
+}
+
+nav ul{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    font-size:17px;
+    position:relative;
+    transition:0.4s;
+}
+
+nav ul li a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0%;
+    height:2px;
+    background:#ff2e2e;
+    transition:0.4s;
+}
+
+nav ul li a:hover{
+    color:#ff2e2e;
+}
+
+nav ul li a:hover::after{
+    width:100%;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    padding:120px 10%;
+    perspective:1000px;
+}
+
+.hero-card{
+    background:rgba(255,255,255,0.04);
+    padding:60px;
+    border-radius:30px;
+    border:1px solid rgba(255,0,0,0.2);
+    backdrop-filter:blur(20px);
+    transform-style:preserve-3d;
+    box-shadow:
+    0 0 30px rgba(255,0,0,0.2),
+    inset 0 0 20px rgba(255,255,255,0.03);
+    animation:float 4s ease-in-out infinite;
+}
+
+.hero h1{
+    font-size:75px;
+    margin-bottom:15px;
+}
+
+.hero span{
+    color:#ff2e2e;
+    text-shadow:0 0 20px red;
+}
+
+.hero p{
+    max-width:700px;
+    font-size:20px;
+    line-height:1.8;
+    color:#d1d5db;
+    margin:auto;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:35px;
+    padding:16px 38px;
+    border-radius:50px;
+    text-decoration:none;
+    color:white;
+    font-weight:600;
+    background:linear-gradient(45deg,#ff0000,#660000);
+    box-shadow:
+    0 0 20px rgba(255,0,0,0.5),
+    inset 0 0 10px rgba(255,255,255,0.2);
+    transition:0.4s;
+}
+
+.btn:hover{
+    transform:translateY(-5px) scale(1.05);
+    box-shadow:0 0 35px red;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section{
+    padding:100px 10%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:45px;
+    color:#ff2e2e;
+    margin-bottom:60px;
+    text-shadow:0 0 15px red;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-box{
+    background:rgba(255,255,255,0.03);
+    padding:50px;
+    border-radius:25px;
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,0,0,0.2);
+    box-shadow:0 0 20px rgba(255,0,0,0.15);
+    transition:0.5s;
+}
+
+.about-box:hover{
+    transform:rotateY(5deg) rotateX(5deg);
+}
+
+.about-box p{
+    text-align:center;
+    font-size:20px;
+    line-height:2;
+    color:#ddd;
+}
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;
+}
+
+.skill{
+    position:relative;
+    height:220px;
+    transform-style:preserve-3d;
+    transition:1s;
+}
+
+.skill:hover{
+    transform:rotateY(180deg);
+}
+
+.skill-front,
+.skill-back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:25px;
+    backface-visibility:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    font-weight:600;
+}
+
+.skill-front{
+    background:linear-gradient(145deg,#111,#1b1b1b);
+    border:1px solid rgba(255,0,0,0.2);
+    box-shadow:0 0 20px rgba(255,0,0,0.2);
+}
+
+.skill-back{
+    background:linear-gradient(145deg,#ff0000,#300000);
+    transform:rotateY(180deg);
+    box-shadow:0 0 25px red;
+}
+
+/* =========================
+   PROJECTS
+========================= */
+
+.projects-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:35px;
+}
+
+.project{
+    background:rgba(255,255,255,0.03);
+    border-radius:25px;
+    padding:35px;
+    border:1px solid rgba(255,0,0,0.15);
+    backdrop-filter:blur(15px);
+    transition:0.5s;
+    position:relative;
+    overflow:hidden;
+}
+
+.project::before{
+    content:'';
+    position:absolute;
+    top:-50%;
+    left:-50%;
+    width:200%;
+    height:200%;
+    background:linear-gradient(
+    45deg,
+    transparent,
+    rgba(255,0,0,0.2),
+    transparent);
+    animation:shine 5s linear infinite;
+}
+
+.project:hover{
+    transform:translateY(-15px) rotateX(5deg);
+    box-shadow:0 0 35px rgba(255,0,0,0.4);
+}
+
+.project h3{
+    color:#ff2e2e;
+    margin-bottom:15px;
+    font-size:28px;
+}
+
+.project p{
+    color:#ddd;
+    line-height:1.8;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-box{
+    background:rgba(255,255,255,0.03);
+    padding:50px;
+    border-radius:30px;
+    text-align:center;
+    border:1px solid rgba(255,0,0,0.2);
+    box-shadow:0 0 25px rgba(255,0,0,0.2);
+}
+
+.contact-box p{
+    margin:18px 0;
+    font-size:20px;
+    color:#ddd;
+    transition:0.3s;
+}
+
+.contact-box p:hover{
+    color:#ff2e2e;
+    transform:scale(1.05);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    text-align:center;
+    padding:25px;
+    background:#080808;
+    border-top:1px solid rgba(255,0,0,0.2);
+    color:#aaa;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes animate{
+
+    0%{
+        transform:translateY(0) scale(0) rotate(0deg);
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-1200px) scale(1.5) rotate(720deg);
+        opacity:0;
+    }
+
+}
+
+@keyframes bgMove{
+
+    0%{
+        transform:scale(1) rotate(0deg);
+    }
+
+    100%{
+        transform:scale(1.1) rotate(2deg);
+    }
+
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-15px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+@keyframes shine{
+    0%{
+        transform:translateX(-100%) rotate(45deg);
+    }
+    100%{
+        transform:translateX(100%) rotate(45deg);
+    }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+    nav{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .hero h1{
+        font-size:50px;
+    }
+
+    .hero-card{
+        padding:40px 25px;
+    }
+
+    .section-title{
+        font-size:35px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- FLOATING LIGHTS -->
+
+<div class="bg-animation">
+
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+
+</div>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">Chundi Gowtham</div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-card">
+
+        <h1>Hello, I'm <span>Chundi Gowtham</span></h1>
+
+        <p>
+            Passionate Artificial Intelligenceand machine learning student focused on
+            Java,python Development, Web Technologies, and creating
+            futuristic software projects with modern UI design.
+        </p>
+
+        <a href="#projects" class="btn">Explore My Projects</a>
+
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <h2 class="section-title">About Me</h2>
+
+    <div class="about-box">
+
+        <p>
+            I am a passionate developer who enjoys creating modern,
+            responsive, and visually attractive websites and applications.
+            I continuously learn new technologies and love building
+            unique projects with interactive user experiences.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+    <h2 class="section-title">My Skills</h2>
+
+    <div class="skills-container">
+
+        <div class="skill">
+            <div class="skill-front">HTML</div>
+            <div class="skill-back">Expert</div>
+        </div>
+
+        <div class="skill">
+            <div class="skill-front">CSS</div>
+            <div class="skill-back">Creative UI</div>
+        </div>
+
+        <div class="skill">
+            <div class="skill-front">JavaScript</div>
+            <div class="skill-back">Interactive</div>
+        </div>
+
+        <div class="skill">
+            <div class="skill-front">Java</div>
+            <div class="skill-back">Backend</div>
+        </div>
+
+        <div class="skill">
+            <div class="skill-front">MySQL</div>
+            <div class="skill-back">Database</div>
+        </div>
+
+        <div class="skill">
+            <div class="skill-front">GitHub</div>
+            <div class="skill-back">Projects</div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+    <h2 class="section-title">Projects</h2>
+
+    <div class="projects-container">
+
+        <div class="project">
+
+            <h3>TypeMaster</h3>
+
+            <p>
+                Interactive typing speed evaluation system developed using Java
+                with performance tracking and analytics.
+            </p>
+
+        </div>
+
+        <div class="project">
+
+            <h3>Aero Reserve</h3>
+
+            <p>
+                Advanced flight reservation management system with
+                booking and customer management features.
+            </p>
+
+        </div>
+
+        <div class="project">
+
+            <h3>Leak Watch</h3>
+
+            <p>
+                Memory leak detection and analysis tool designed
+                for software monitoring and optimization.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+    <h2 class="section-title">Contact Me</h2>
+
+    <div class="contact-box">
+
+        <p>Email: gouthampandu315@gmail.com</p>
+
+        <p>LinkedIn: linkedin.com/in/chundi_gowtham</p>
+
+        <p>GitHub: github.com/chundigowtham</p>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>© 2026 Chundi Gowtham Portfolio | All Rights Reserved</p>
+
+</footer>
+
+</body>
+</html>
